@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,28 +7,288 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <style>
-      body {
-        font-family: 'Inter', sans-serif;
-      }
-      h1, h2, h3, .font-serif {
-        font-family: 'Playfair Display', serif;
-      }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+        .glass { background: rgba(10, 10, 12, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .text-gradient { background: linear-gradient(to r, #60a5fa, #4f46e5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
-  }
-}
-</script>
 </head>
-<body class="bg-slate-50 text-slate-900">
-    <div id="root"></div>
+<body class="bg-[#0a0a0c] text-slate-200 selection:bg-blue-500/30">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full glass z-50 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-2 rounded-xl shadow-lg shadow-blue-500/20">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <span class="text-xl font-bold tracking-tighter text-white uppercase">Innovation <span class="text-blue-500">Homes</span></span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-10">
+                    <a href="#services" class="text-sm font-medium text-slate-400 hover:text-white transition">Services</a>
+                    <a href="#process" class="text-sm font-medium text-slate-400 hover:text-white transition">Our Process</a>
+                    <a href="#portfolio" class="text-sm font-medium text-slate-400 hover:text-white transition">Portfolio</a>
+                    <a href="#contact" class="bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-500/20">Get a Quote</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-white p-2">
+                        <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-b border-white/10 px-4 py-8 space-y-4">
+            <a href="#services" class="block text-lg font-bold hover:text-blue-500">Services</a>
+            <a href="#process" class="block text-lg font-bold hover:text-blue-500">Process</a>
+            <a href="#portfolio" class="block text-lg font-bold hover:text-blue-500">Portfolio</a>
+            <a href="#contact" class="block bg-blue-600 text-center py-4 rounded-xl font-bold">Get a Quote</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(30,58,138,0.15),transparent)]"></div>
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000" alt="Luxury Architecture" class="w-full h-full object-cover opacity-30 grayscale">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0c]/20 via-[#0a0a0c] to-[#0a0a0c]"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 relative z-10 w-full">
+            <div class="max-w-4xl">
+                <div class="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/30 text-blue-400 px-4 py-1.5 rounded-full text-sm font-bold mb-8 backdrop-blur-md">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    <span>TEXAS LICENSED & INSURED</span>
+                </div>
+                <h1 class="text-6xl md:text-8xl font-black text-white leading-[1.1] mb-8 tracking-tighter uppercase">
+                    Crafting Legacies<br/>
+                    Through <span class="text-gradient">Precision</span>.
+                </h1>
+                <p class="text-xl text-slate-400 mb-12 max-w-2xl leading-relaxed font-medium">
+                    Uncompromising quality in Pasadena and the Greater Houston area. We specialize in luxury residential builds and sophisticated commercial transformations.
+                </p>
+                <div class="flex flex-wrap gap-5">
+                    <a href="#contact" class="bg-white text-black px-10 py-5 rounded-2xl text-lg font-bold hover:bg-blue-50 transition shadow-2xl shadow-white/5 flex items-center group">
+                        Start Your Project <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                    <a href="#portfolio" class="bg-slate-800/50 backdrop-blur-xl border border-white/10 text-white px-10 py-5 rounded-2xl text-lg font-bold hover:bg-slate-700 transition">View Our Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Master Build Process -->
+    <section id="process" class="py-32 relative border-t border-white/5 bg-[#0d0d0f]">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-8 tracking-tight">Our Master Build Process</h2>
+                    <p class="text-slate-400 text-lg mb-12">Transparency and meticulous planning are the foundations of our excellence. Our four-stage methodology ensures perfection at every turn.</p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex space-x-6 p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-blue-500/30 transition group">
+                            <div class="flex-shrink-0 w-12 h-12 bg-blue-600/10 text-blue-500 rounded-xl flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-2">01. Consultation</h4>
+                                <p class="text-slate-500 text-sm">A deep dive into your vision, functional requirements, and investment targets.</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-6 p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-blue-500/30 transition group">
+                            <div class="flex-shrink-0 w-12 h-12 bg-blue-600/10 text-blue-500 rounded-xl flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-2">02. Conceptual Design</h4>
+                                <p class="text-slate-500 text-sm">Architectural drafting paired with curated material selection and engineering.</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-6 p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-blue-500/30 transition group">
+                            <div class="flex-shrink-0 w-12 h-12 bg-blue-600/10 text-blue-500 rounded-xl flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 011-1h1a2 2 0 100-4H7a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-2">03. Precision Build</h4>
+                                <p class="text-slate-500 text-sm">Flawless execution by master craftsmen and certified site managers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-blue-600/10 rounded-[3rem] blur-2xl"></div>
+                    <img src="https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&q=80&w=1200" alt="Process" class="relative rounded-[2.5rem] border border-white/10 shadow-2xl">
+                    <div class="absolute -bottom-8 -left-8 bg-blue-600 p-8 rounded-3xl shadow-xl hidden md:block">
+                        <div class="text-4xl font-black text-white">5.0</div>
+                        <div class="text-blue-100 text-xs font-bold uppercase tracking-widest mt-1">Google Rated</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-32 bg-white text-black">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-24">
+                <h2 class="text-5xl font-bold tracking-tighter mb-6 uppercase">Our Core Expertise</h2>
+                <div class="w-24 h-1.5 bg-blue-600 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 border border-slate-200 rounded-3xl overflow-hidden shadow-2xl">
+                <!-- Service 1 -->
+                <div class="bg-white p-12 hover:bg-slate-50 transition-colors group">
+                    <div class="text-blue-600 mb-8 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 tracking-tight uppercase">Custom Residencies</h3>
+                    <p class="text-slate-600 leading-relaxed font-medium">Distinctive estates engineered for comfort and lasting structural integrity.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="bg-white p-12 hover:bg-slate-50 transition-colors group">
+                    <div class="text-blue-600 mb-8 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 tracking-tight uppercase">Smart Renovations</h3>
+                    <p class="text-slate-600 leading-relaxed font-medium">Elevating existing structures with modern sustainability and technology.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="bg-white p-12 hover:bg-slate-50 transition-colors group">
+                    <div class="text-blue-600 mb-8 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 tracking-tight uppercase">Commercial Build</h3>
+                    <p class="text-slate-600 leading-relaxed font-medium">High-performance retail and industrial spaces designed for scaling.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="py-24 bg-[#0a0a0c] border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-white mb-2">5.0/5</div>
+                <div class="text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">Client Rating</div>
+            </div>
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-white mb-2">240+</div>
+                <div class="text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">Completed Projects</div>
+            </div>
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-white mb-2">Elite</div>
+                <div class="text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">Materials Choice</div>
+            </div>
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-white mb-2">15+</div>
+                <div class="text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">Years Lead</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-32">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-20">
+                <div>
+                    <h2 class="text-4xl font-bold text-white mb-6 uppercase tracking-tight">Let's Discuss Your Vision</h2>
+                    <p class="text-slate-400 mb-12 text-lg">Our team of experts is ready to transform your architectural concepts into reality.</p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-6">
+                            <div class="bg-blue-600/10 p-4 rounded-xl text-blue-500 border border-blue-500/20">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1 uppercase tracking-wider text-xs">Our Studio</h4>
+                                <p class="text-slate-400">1541 Richey St, Pasadena, TX 77502</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-6">
+                            <div class="bg-blue-600/10 p-4 rounded-xl text-blue-500 border border-blue-500/20">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1 uppercase tracking-wider text-xs">Direct Line</h4>
+                                <p class="text-slate-400">(832) 526-9215</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white/5 p-10 rounded-3xl border border-white/10 backdrop-blur-xl">
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <input type="text" placeholder="Full Name" required class="bg-black/40 border border-white/10 rounded-xl p-4 w-full focus:ring-2 focus:ring-blue-500 outline-none text-white transition">
+                            <input type="email" placeholder="Email Address" required class="bg-black/40 border border-white/10 rounded-xl p-4 w-full focus:ring-2 focus:ring-blue-500 outline-none text-white transition">
+                        </div>
+                        <select required class="bg-black/40 border border-white/10 rounded-xl p-4 w-full focus:ring-2 focus:ring-blue-500 outline-none text-white appearance-none">
+                            <option value="" disabled selected>Select Project Type</option>
+                            <option class="bg-slate-900">Custom Residence</option>
+                            <option class="bg-slate-900">Home Renovation</option>
+                            <option class="bg-slate-900">Commercial Build</option>
+                        </select>
+                        <textarea placeholder="Tell us about your project..." required class="bg-black/40 border border-white/10 rounded-xl p-4 w-full h-32 focus:ring-2 focus:ring-blue-500 outline-none text-white resize-none transition"></textarea>
+                        <button type="submit" class="w-full bg-blue-600 text-white py-5 rounded-xl font-bold hover:bg-blue-700 transition shadow-xl shadow-blue-500/20 uppercase tracking-widest text-sm">Send Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-20 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-10">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-blue-600 p-2 rounded-lg"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg></div>
+                    <span class="text-lg font-bold tracking-tighter text-white uppercase">Innovation <span class="text-blue-500">Homes</span></span>
+                </div>
+                
+                <div class="flex space-x-10 text-slate-500 text-sm font-bold uppercase tracking-widest">
+                    <a href="#" class="hover:text-white transition">Privacy</a>
+                    <a href="#" class="hover:text-white transition">Terms</a>
+                    <a href="#" class="hover:text-white transition">Licensing</a>
+                </div>
+                
+                <div class="text-slate-600 text-xs font-medium">
+                    &copy; 2024 Innovation Homes Construction. Texas License #832526
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('menu-toggle');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Form Submit Handler
+        const form = document.getElementById('contact-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your interest! Our architectural team will contact you shortly.');
+            form.reset();
+        });
+
+        // Sticky Nav Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-2xl');
+            } else {
+                nav.classList.remove('shadow-2xl');
+            }
+        });
+    </script>
 </body>
 </html>
